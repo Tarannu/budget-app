@@ -1,0 +1,1 @@
+This repository contains a budget web application. Written in JS.
