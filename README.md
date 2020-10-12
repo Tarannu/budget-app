@@ -24,7 +24,7 @@ In your command terminal type the following.
  After cloning it to your desktop or your own computer hard drive go to the folder budget-app>starter then click on index.html and you will be led to the web app in your default browser.
 
 ## A snippet of the applicationi in the browser
-! [Project Image](https://photos.app.goo.gl/3zvi7doMBkwZ8Yu36)
+! [Project Image](Capture.JPG)
 
 
 
