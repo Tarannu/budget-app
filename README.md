@@ -21,7 +21,12 @@ In your command terminal type the following.
 ```html
     git clone https://github.com/Tarannu/budget-app.git
 ```
- After cloning it to your desktop or your own computer hard drive go to the folder budget-app>starter then click on index.html and you will be led to the app in your defalt browser.
+ After cloning it to your desktop or your own computer hard drive go to the folder budget-app>starter then click on index.html and you will be led to the web app in your default browser.
+
+## A snippet of the applicationi in the browser
+! [Project Image](https://photos.app.goo.gl/3zvi7doMBkwZ8Yu36)
+
+
 
 ## Author info
 

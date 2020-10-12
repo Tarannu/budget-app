@@ -32,8 +32,8 @@ body {
 **********************************************/
 
 .top {
-    height: 40vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.35)), url(assets/back.jpg);
+    height: 55vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url(assets/back.jpg);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -71,7 +71,7 @@ body {
 
 .budget__income {
     margin-bottom: 10px;
-    background-color: rgb(36, 117, 36);;
+    background-color: rgb(37, 36, 117);;
 }
 
 .budget__expenses {
@@ -156,7 +156,7 @@ body {
     font-size: 35px;
     background: none;
     border: none;
-    color: rgb(36, 117, 36);;
+    color: rgb(37, 36, 117);;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
@@ -170,7 +170,7 @@ body {
 .add__description:focus,
 .add__value:focus {
     outline: none;
-    border: 1px solid rgb(36, 117, 36);;
+    border: 1px solid rgb(37, 36, 117);;
 }
 
 .add__btn:focus { outline: none; }
@@ -200,7 +200,7 @@ h2 {
     margin-bottom: 15px;
 }
 
-.icome__title { color: rgb(36, 117, 36); }
+.icome__title { color: rgb(37, 36, 117); }
 .expenses__title { color: #FF5049; }
 
 .item {
@@ -234,7 +234,7 @@ h2 {
 
 .income .item__value,
 .income .item__delete--btn {
-    color: rgb(36, 117, 36);;
+    color: rgb(37, 36, 117);;
 }
 
 .expenses .item__value,
