@@ -17,7 +17,14 @@ Then at the form the input stores the income when added with the '+' selection. 
 #### Installation
 
 #### Get the git repository
+In your command terminal type the following. 
 ```html
     git clone https://github.com/Tarannu/budget-app.git
 ```
  After cloning it to your desktop or your own computer hard drive go to the folder budget-app>starter then click on index.html and you will be led to the app in your defalt browser.
+
+## Author info
+
+- LinkedIn - [islamtarannum](https://www.linkedin.com/in/islamtarannum/)
+
+[Back To the Top](#project-name)
