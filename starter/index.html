@@ -42,10 +42,9 @@
     <div class="bottom">
         <div class="add">
             <div class="add__container">
-                <select class="add__type">
-                    <option value-="place">Select your Action</option>
-                    <option value="inc" selected>+</option>
-                    <option value="exp">-</option>
+                <select id="add__type">
+                    <option value="inc" > + </option>
+                    <option value="exp"> - </option>
                 </select>
                 <input id="description" type="text" class="add__description" placeholder="Add description">
                 <input id="value" type="number" class="add__value" placeholder="Value">
@@ -58,31 +57,8 @@
                 <h2 class="icome__title">List of Income</h2>
 
                 <div class="income__list">
-                    
-
-                    <!--
-                        <div class="item clearfix" id="income-0">
-                            <div class="item__description">Salary</div>
-                            <div class="right clearfix">
-                                <div class="item__value">+ 2,100.00</div>
-                                <div class="item__delete">
-                                    <button class="item__delete--btn">
-                                        <i class="ion-ios-close-outline"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="item clearfix" id="income-1">
-                            <div class="item__description">Sold car</div>
-                            <div class="right clearfix">
-                                <div class="item__value">+ 1,500.00</div>
-                                <div class="item__delete">
-                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        -->
+                    <table id="income__table">
+                    </table>
 
                 </div>
             </div>
@@ -93,29 +69,8 @@
                 <h2 class="expenses__title">List of Expenses</h2>
 
                 <div class="expenses__list">
-
-                    <!--
-                        <div class="item clearfix" id="expense-0">
-                            <div class="item__description">Apartment rent</div>
-                            <div class="right clearfix">
-                                <div class="item__value">- 900.00</div>
-                                <div class="item__percentage">21%</div>
-                                <div class="item__delete">
-                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item clearfix" id="expense-1">
-                            <div class="item__description">Grocery shopping</div>
-                            <div class="right clearfix">
-                                <div class="item__value">- 435.28</div>
-                                <div class="item__percentage">10%</div>
-                                <div class="item__delete">
-                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        -->
+                    <table id="expense__table">
+                    </table>
 
                 </div>
             </div>
@@ -124,7 +79,7 @@
 
     </div>
     <!-- <script src="controllers/yourController.js"></script> -->
-    <script src="app.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

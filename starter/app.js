@@ -294,7 +294,7 @@ var budgetController = (function(){
     };
   
   })();
-  
+
   
   //GLOBAL APP CONTROLLER
   var controller = (function(budgetCtrl,UICtrl){
