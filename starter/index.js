@@ -7,6 +7,9 @@ var selectInput=document.getElementById('add__type');
 var expenseTable=document.getElementById('expense__table');//expense table
 var totalBudget=document.getElementById('budget__value');
 var budgetIncomeDiv=document.getElementById('budget__income--value');
+var budgetExpenseDiv=document.getElementById('budget__expenses--value');
+
+//Setting the budget values for the top part
 var budget=0;
 var budgetIncome=0;
 var budgetExpense=0;
@@ -23,31 +26,32 @@ function creatingTable(){
 
         console.log("if inc is entered");
         incomeTable.insertAdjacentHTML('beforeend',htmlContent);
-        //budget+=numberInput.value;
-        
+        budget+=parseInt(numberInput.value);
         budgetIncome+=parseInt(numberInput.value);
-        console.log("inside inc app ",budgetIncome);
-    } else if(selectInput.value==='exp'){
+    
+    } 
+    else if(selectInput.value==='exp'){
         
         console.log("if exp is entered")
-        expenseTable.insertAdjacentHTML('beforeend',budgetIncome);
-    
-        budgetExpense+=numberInput.value;
+        expenseTable.insertAdjacentHTML('beforeend',htmlContent);
+        
+        budgetExpense+=parseInt(numberInput.value);
+        budget=budget-budgetExpense;
+        console.log("budget expesnse is "+budgetExpense);
     }
     
     //console.log(budget);
     
     console.log("the function is here before addtobudget function");
 
-    budgetIncomeDiv.innerHTML=budgetIncome;
 
-    // function addToBudget(){
-        
-    //     budgetIncomeDiv.innerHTML=budgetIncome;
-    //     //totalBudget.innerHTML=budget;
-    // }
+    function addToBudget(){
+        totalBudget.innerHTML=budget;
+        budgetIncomeDiv.innerHTML=budgetIncome;
+        budgetExpenseDiv.innerHTML=budgetExpense;
+    }
 
-    // addToBudget();
+    addToBudget();
     console.log("here after budget function",budgetIncome);
 
     descriptionInput.value='';
