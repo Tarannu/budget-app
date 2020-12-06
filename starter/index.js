@@ -8,6 +8,8 @@ var expenseTable=document.getElementById('expense__table');//expense table
 var totalBudget=document.getElementById('budget__value');
 var budgetIncomeDiv=document.getElementById('budget__income--value');
 var budgetExpenseDiv=document.getElementById('budget__expenses--value');
+//var incomePercentageDiv=document.getElementById('budget__income--percentage');
+var expensePercentageDiv=document.getElementById('budget__expenses--percentage');
 
 //Setting the budget values for the top part
 var budget=0;
@@ -34,17 +36,12 @@ function creatingTable(){
         
         console.log("if exp is entered")
         expenseTable.insertAdjacentHTML('beforeend',htmlContent);
-        
         budgetExpense+=parseInt(numberInput.value);
         budget=budget-budgetExpense;
-        console.log("budget expesnse is "+budgetExpense);
     }
     
-    //console.log(budget);
     
-    console.log("the function is here before addtobudget function");
-
-
+    //Adding budget calculation at top of the page
     function addToBudget(){
         totalBudget.innerHTML=budget;
         budgetIncomeDiv.innerHTML=budgetIncome;
@@ -52,8 +49,20 @@ function creatingTable(){
     }
 
     addToBudget();
-    console.log("here after budget function",budgetIncome);
+    //adding percentage to top
+    function addPercentage(){
+        var percentageOfExpense=parseFloat((budgetExpense/budgetIncome)*100);
+        expensePercentageDiv.innerHTML=percentageOfExpense+" %";
+        
+    }
+    addPercentage();
 
+    // function addCalender{
+
+
+    // }
+    // addCalender();
+    
     descriptionInput.value='';
     numberInput.value='';
 
