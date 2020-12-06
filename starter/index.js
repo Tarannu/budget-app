@@ -5,37 +5,51 @@ var numberInput=document.getElementById('value');
 var addButton=document.getElementById('add__btn');
 var selectInput=document.getElementById('add__type');
 var expenseTable=document.getElementById('expense__table');//expense table
-var budgetIncome=document.getElementsByClassName('budget__income--value');
-//creating funtions
+var totalBudget=document.getElementById('budget__value');
+var budgetIncomeDiv=document.getElementById('budget__income--value');
+var budget=0;
+var budgetIncome=0;
+var budgetExpense=0;
+
+//creating functions
 function creatingTable(){
     console.log("Creating Table Function Started");
-
-    console.log("the function is here before if")
+    
+    
     var htmlContent=`<tr><td>${descriptionInput.value}</td><td>${numberInput.value}</td><td><button class="delete-button"><i class="ion-ios-close-outline"></i></button></td></tr>`;
+    
     
     if(selectInput.value==='inc'){
 
         console.log("if inc is entered");
         incomeTable.insertAdjacentHTML('beforeend',htmlContent);
+        //budget+=numberInput.value;
+        
+        budgetIncome+=parseInt(numberInput.value);
+        console.log("inside inc app ",budgetIncome);
     } else if(selectInput.value==='exp'){
-        //addToExpense(); //add to expense table
+        
         console.log("if exp is entered")
-        expenseTable.insertAdjacentHTML('beforeend',htmlContent);
-    }
-    if(selectInput.value=='inc'){
-        var check='inc';
-    }
-    else {
-        check='exp';
-    }
-    console.log(check);
+        expenseTable.insertAdjacentHTML('beforeend',budgetIncome);
     
-    console.log("the function is here after if")
+        budgetExpense+=numberInput.value;
+    }
+    
+    //console.log(budget);
+    
+    console.log("the function is here before addtobudget function");
+
+    budgetIncomeDiv.innerHTML=budgetIncome;
+
     // function addToBudget(){
         
-    //     budgetIncome.innerHTML=numberInput;
+    //     budgetIncomeDiv.innerHTML=budgetIncome;
+    //     //totalBudget.innerHTML=budget;
     // }
+
     // addToBudget();
+    console.log("here after budget function",budgetIncome);
+
     descriptionInput.value='';
     numberInput.value='';
 
