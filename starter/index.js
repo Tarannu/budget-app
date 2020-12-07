@@ -90,16 +90,25 @@ function creatingTable(){
 
 }
 //delete row and update budget
-function deleteRow(e){
+function deleteRowIncome(e){
     if(e.target.className==='delete-button'){
         var row=e.target.parentElement.parentElement;
         e.target.parentElement.parentElement.remove(row);
     }
+    
+    
+}
+function deleteRowExpense(e){
+    if(e.target.className==='delete-button'){
+        var row=e.target.parentElement.parentElement;
+        e.target.parentElement.parentElement.remove(row);
+    }
+    
     
 }
 
 //create event handler and calling functions
 addMonth();
 addButton.addEventListener('click',creatingTable);
-document.getElementById('income__table').addEventListener('click',deleteRow);
-document.getElementById('expense__table').addEventListener('click',deleteRow);
+document.getElementById('income__table').addEventListener('click',deleteRowIncome);
+document.getElementById('expense__table').addEventListener('click',deleteRowExpense);
