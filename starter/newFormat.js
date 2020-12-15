@@ -4,20 +4,23 @@ model={
 
 }
 view={
-    render: function(){
-        var incomeTable = document.getElementById('income__table');//income table
-        var descriptionInput = document.getElementById('description');
-        var numberInput = document.getElementById('value');
-        var addButton = document.getElementById('add__btn');
-        var selectInput = document.getElementById('add__type');
-        var expenseTable = document.getElementById('expense__table');//expense table
-        var totalBudget = document.getElementById('budget__value');
-        var budgetIncomeDiv = document.getElementById('budget__income--value');
-        var budgetExpenseDiv = document.getElementById('budget__expenses--value');
-        var expensePercentageDiv = document.getElementById('budget__expenses--percentage');
-        var monthDiv = document.getElementById('budget__title--month');
-    },
+    incomeTable: document.getElementById('income__table'),//income table
+    descriptionInput: document.getElementById('description'),
+    numberInput: document.getElementById('value'),
+    addButton: document.getElementById('add__btn'),
+    selectInput: document.getElementById('add__type'),
+    expenseTable: document.getElementById('expense__table'),//expense table
+    totalBudget: document.getElementById('budget__value'),
+    budgetIncomeDiv: document.getElementById('budget__income--value'),
+    budgetExpenseDiv: document.getElementById('budget__expenses--value'),
+    expensePercentageDiv: document.getElementById('budget__expenses--percentage'),
+    budget: 0,
+    budgetIncome: 0,
+    budgetExpense: 0,
+    
     addMonth:function() {
+        
+        var monthDiv = document.getElementById('budget__title--month');
         var month = [];
         month[0] = 'January';
         month[1] = 'February';
@@ -37,62 +40,65 @@ view={
         monthDiv.innerHTML = monthValue + " " + date.getFullYear();
     },
     addToTable: function(){
-        view.render();
+        
         console.log("Creating Table Function Started");
 
-        if (selectInput.value === 'inc') var sign = "+";
-        else if (selectInput.value === 'exp') var sign = "-";
-        var htmlContent = `<tr id="item"><td id="item__description">${descriptionInput.value}</td><td class="budget-value">${sign} ${numberInput.value}</td><td><button id="delete-button" class="delete-button"><i class="ion-ios-close-outline"></i></button></td></tr>`;
-        if (selectInput.value === 'inc') {
-            incomeTable.insertAdjacentHTML('beforeend', htmlContent);
-            budget += parseInt(numberInput.value);
-            budgetIncome += parseInt(numberInput.value);
+        if (view.selectInput.value === 'inc') var sign = "+";
+        else if (view.selectInput.value === 'exp') sign = "-";
+        var htmlContent = `<tr id="item"><td id="item__description">${view.descriptionInput.value}</td><td class="budget-value">${sign} ${view.numberInput.value}</td><td><button id="delete-button" class="delete-button"><i class="ion-ios-close-outline"></i></button></td></tr>`;
+        if (view.selectInput.value === 'inc') {
+            view.incomeTable.insertAdjacentHTML('beforeend', htmlContent);
+            view.budget += parseInt(view.numberInput.value);
+            view.budgetIncome += parseInt(view.numberInput.value);
         }
-        else if (selectInput.value === 'exp') {
-            expenseTable.insertAdjacentHTML('beforeend', htmlContent);
-            budgetExpense += parseInt(numberInput.value);
-            budget = budget - budgetExpense;
+        else if (view.selectInput.value === 'exp') {
+            view.expenseTable.insertAdjacentHTML('beforeend', htmlContent);
+            view.budgetExpense += parseInt(view.numberInput.value);
+            view.budget = view.budget - view.budgetExpense;
         }
         else {
             window.alert("Please select the sign + or - ");
         }
-        addToBudget();
-        addPercentage();
-        clearInput();  
+        view.addToBudget();
+        view.addPercentage();
+        view.clearInput();  
     },
     addToBudget:function(){
-        totalBudget.innerHTML = budget;
-        budgetIncomeDiv.innerHTML = "+ " + budgetIncome;
-        budgetExpenseDiv.innerHTML = "- " + budgetExpense;
+        view.totalBudget.innerHTML = view.budget;
+        view. budgetIncomeDiv.innerHTML = "+ " + view.budgetIncome;
+
+        view. budgetExpenseDiv.innerHTML = "- " + view.budgetExpense;
     },
     addPercentage:function() {
-        var percentageOfExpense = parseFloat((budgetExpense / budgetIncome) * 100);
+        var percentageOfExpense = parseFloat((view.budgetExpense / view.budgetIncome) * 100);
 
-        expensePercentageDiv.innerHTML = Math.round(percentageOfExpense) + " %";
+        view.expensePercentageDiv.innerHTML = Math.round(percentageOfExpense) + " %";
 
     },
 
     clearInput: function(){
-        descriptionInput.value = '';
-        numberInput.value = '';
+        view.descriptionInput.value = '';
+        view.numberInput.value = '';
     },
 
 };
 controller={
     init: function(){
-        view.render();
+        
         view.addMonth();
+        controller.eventHandler();
+        
     },
-    addItem: function(){
-        view.render();
+    eventHandler: function(){
+        
+        view.addButton.addEventListener('click', view.addToTable);
+        document.getElementById('income__table').addEventListener('click', controller.deleteRowIncome);
+        document.getElementById('expense__table').addEventListener('click', controller.deleteRowExpense);
+
 
     },
-    completeItem: function(){
-        view.render();
-    },
-    
+        
     deleteRowIncome: function(e){
-        view.render();
         if (e.target.className === 'delete-button') {
             var row = e.target.parentElement.parentElement;
             e.target.parentElement.parentElement.remove(row);
@@ -101,10 +107,10 @@ controller={
         var income_to_delete=row.cells[1].innerHTML.split(' ');
 
         function deleteIncomeBudget() {
-            budget=budget-parseInt(income_to_delete[1]);
-            budgetIncome=budgetIncome-income_to_delete[1];
-            totalBudget.innerHTML = budget;
-            budgetIncomeDiv.innerHTML = "+ " + budgetIncome;
+            view.budget=view.budget-parseInt(income_to_delete[1]);
+            view.budgetIncome=view.budgetIncome-income_to_delete[1];
+            view.totalBudget.innerHTML = view.budget;
+            view.budgetIncomeDiv.innerHTML = "+ " + view.budgetIncome;
         }
         deleteIncomeBudget();
         
@@ -118,10 +124,10 @@ controller={
     
         
         function deleteExpenseBudget() {
-            budget=budget+parseInt(expense_to_delete[1]);
-            budgetExpense=budgetExpense-expense_to_delete[1];
-            totalBudget.innerHTML = budget;
-            budgetExpenseDiv.innerHTML = "- " + budgetExpense;
+            view.budget=view.budget+parseInt(expense_to_delete[1]);
+            view.budgetExpense=view.budgetExpense-expense_to_delete[1];
+            view.totalBudget.innerHTML = view.budget;
+            view.budgetExpenseDiv.innerHTML = "- " + view.budgetExpense;
         }
         deleteExpenseBudget();
     }
