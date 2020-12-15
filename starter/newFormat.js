@@ -17,6 +17,25 @@ view={
         var expensePercentageDiv = document.getElementById('budget__expenses--percentage');
         var monthDiv = document.getElementById('budget__title--month');
     },
+    addMonth:function() {
+        var month = [];
+        month[0] = 'January';
+        month[1] = 'February';
+        month[2] = 'March';
+        month[3] = 'April';
+        month[4] = 'May';
+        month[5] = 'June';
+        month[6] = 'July';
+        month[7] = 'August';
+        month[8] = 'September';
+        month[9] = 'October';
+        month[10] = 'November';
+        month[11] = 'December';
+    
+        var date = new Date();
+        var monthValue = month[date.getMonth()];
+        monthDiv.innerHTML = monthValue + " " + date.getFullYear();
+    },
     addToTable: function(){
         view.render();
         console.log("Creating Table Function Started");
@@ -38,12 +57,19 @@ view={
             window.alert("Please select the sign + or - ");
         }
         addToBudget();
+        addPercentage();
         clearInput();  
     },
     addToBudget:function(){
         totalBudget.innerHTML = budget;
         budgetIncomeDiv.innerHTML = "+ " + budgetIncome;
         budgetExpenseDiv.innerHTML = "- " + budgetExpense;
+    },
+    addPercentage:function() {
+        var percentageOfExpense = parseFloat((budgetExpense / budgetIncome) * 100);
+
+        expensePercentageDiv.innerHTML = Math.round(percentageOfExpense) + " %";
+
     },
 
     clearInput: function(){
@@ -55,16 +81,51 @@ view={
 controller={
     init: function(){
         view.render();
+        view.addMonth();
     },
     addItem: function(){
         view.render();
+
     },
     completeItem: function(){
         view.render();
     },
-    deleteItem: function(){
+    
+    deleteRowIncome: function(e){
         view.render();
+        if (e.target.className === 'delete-button') {
+            var row = e.target.parentElement.parentElement;
+            e.target.parentElement.parentElement.remove(row);
+        }
+
+        var income_to_delete=row.cells[1].innerHTML.split(' ');
+
+        function deleteIncomeBudget() {
+            budget=budget-parseInt(income_to_delete[1]);
+            budgetIncome=budgetIncome-income_to_delete[1];
+            totalBudget.innerHTML = budget;
+            budgetIncomeDiv.innerHTML = "+ " + budgetIncome;
+        }
+        deleteIncomeBudget();
+        
+    },
+    deleteRowExpense: function(e) {
+        if (e.target.className === 'delete-button') {
+            var row = e.target.parentElement.parentElement;
+            e.target.parentElement.parentElement.remove(row);
+        }
+        var expense_to_delete=row.cells[1].innerHTML.split(' ');
+    
+        
+        function deleteExpenseBudget() {
+            budget=budget+parseInt(expense_to_delete[1]);
+            budgetExpense=budgetExpense-expense_to_delete[1];
+            totalBudget.innerHTML = budget;
+            budgetExpenseDiv.innerHTML = "- " + budgetExpense;
+        }
+        deleteExpenseBudget();
     }
+
 
 
 }
