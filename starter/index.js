@@ -1,3 +1,4 @@
+console.log("The delete button always work keep on pushin until you delete but it works !!! ")
 //fetching from HTML
 var incomeTable = document.getElementById('income__table');//income table
 var descriptionInput = document.getElementById('description');
@@ -43,7 +44,7 @@ function creatingTable() {
     if (selectInput.value === 'inc') var sign = "+";
     else if (selectInput.value === 'exp') var sign = "-";
 
-    var htmlContent = `<tr><td>${descriptionInput.value}</td><td class="budget-value">${sign} ${numberInput.value}</td><td><button class="delete-button"><i class="ion-ios-close-outline"></i></button></td></tr>`;
+    var htmlContent = `<tr id="item"><td id="item__description">${descriptionInput.value}</td><td class="budget-value">${sign} ${numberInput.value}</td><td><button id="delete-button" class="delete-button"><i class="ion-ios-close-outline"></i></button></td></tr>`;
 
 
     if (selectInput.value === 'inc') {
@@ -97,7 +98,6 @@ function deleteRowIncome(e) {
     }
 
     var income_to_delete=row.cells[1].innerHTML.split(' ');
-    console.log("income to delete ", income_to_delete[1]);
     
     function deleteIncomeBudget() {
         budget=budget-parseInt(income_to_delete[1]);
@@ -113,12 +113,11 @@ function deleteRowExpense(e) {
         e.target.parentElement.parentElement.remove(row);
     }
     var expense_to_delete=row.cells[1].innerHTML.split(' ');
-    console.log("income to delete ", expense_to_delete[1]);
+
     
     function deleteExpenseBudget() {
         budget=budget+parseInt(expense_to_delete[1]);
         budgetExpense=budgetExpense-expense_to_delete[1];
-        console.log("New budget and income ",budget,budgetIncome)
         totalBudget.innerHTML = budget;
         budgetExpenseDiv.innerHTML = "- " + budgetExpense;
     }

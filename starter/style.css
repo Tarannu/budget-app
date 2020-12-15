@@ -208,7 +208,7 @@ h2 {
     border-bottom: 1px solid #e7e7e7;
 }
 
-.item:first-child { border-top: 1px solid #e7e7e7; }
+.item:first-child { border-top: 1px solid #e7e7e7; }  
 .item:nth-child(even) { background-color: #f7f7f7; }
 
 .item__description {
@@ -280,12 +280,25 @@ table {
   }
 #income__table,td{
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
+    
     padding: 8px;
+    outline: none;
+}
+#expense__table,td{
+    
+    border: 1px solid #dddddd;
+    text-align: center;
+    
+    padding: 8px;
+    outline: none;
+    
 }
 tr:nth-child(even) {
     background-color: #dddddd;
   }
-
+#delete-button{
+    color: #0f5735;
+}
 .unpaid .item__percentage { box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1); }
 .unpaid:hover .item__description { font-weight: 900; }
