@@ -44,7 +44,7 @@ function creatingTable() {
     if (selectInput.value === 'inc') var sign = "+";
     else if (selectInput.value === 'exp') var sign = "-";
 
-    var htmlContent = `<tr id="item"><td id="item__description">${descriptionInput.value}</td><td class="budget-value">${sign} ${numberInput.value}</td><td><button id="delete-button" class="delete-button"><i class="ion-ios-close-outline"></i></button></td></tr>`;
+    var htmlContent = `<tr id="item"><td id="item__description">${descriptionInput.value}</td><td class="budget-value">${sign} ${numberInput.value}</td><td><button id="delete-button" class="delete-button">Delete</button></td></tr>`;
 
 
     if (selectInput.value === 'inc') {
@@ -60,7 +60,7 @@ function creatingTable() {
         console.log("if exp is entered")
         expenseTable.insertAdjacentHTML('beforeend', htmlContent);
         budgetExpense += parseInt(numberInput.value);
-        budget = budget - budgetExpense;
+        budget = budget - budgetExpense; 
     }
     else {
         window.alert("Please select the sign + or - ");
