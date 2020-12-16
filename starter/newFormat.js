@@ -14,6 +14,7 @@ view={
     budgetIncomeDiv: document.getElementById('budget__income--value'),
     budgetExpenseDiv: document.getElementById('budget__expenses--value'),
     expensePercentageDiv: document.getElementById('budget__expenses--percentage'),
+    //Setting the budget values for the top part
     budget: 0,
     budgetIncome: 0,
     budgetExpense: 0,
@@ -41,6 +42,7 @@ view={
     },
     addToTable: function(){
         
+        
         console.log("Creating Table Function Started");
 
         if (view.selectInput.value === 'inc') var sign = "+";
@@ -59,22 +61,11 @@ view={
         else {
             window.alert("Please select the sign + or - ");
         }
-        view.addToBudget();
-        view.addPercentage();
+        budgetController.addToBudget();
+        budgetController.addPercentage();
         view.clearInput();  
     },
-    addToBudget:function(){
-        view.totalBudget.innerHTML = view.budget;
-        view. budgetIncomeDiv.innerHTML = "+ " + view.budgetIncome;
-
-        view. budgetExpenseDiv.innerHTML = "- " + view.budgetExpense;
-    },
-    addPercentage:function() {
-        var percentageOfExpense = parseFloat((view.budgetExpense / view.budgetIncome) * 100);
-
-        view.expensePercentageDiv.innerHTML = Math.round(percentageOfExpense) + " %";
-
-    },
+    
 
     clearInput: function(){
         view.descriptionInput.value = '';
@@ -82,11 +73,28 @@ view={
     },
 
 };
+budgetController={
+    
+
+    addToBudget:function(){
+        view.totalBudget.innerHTML = view.budget;
+        view.budgetIncomeDiv.innerHTML = "+ " + view.budgetIncome;
+
+        view.budgetExpenseDiv.innerHTML = "- " + view.budgetExpense;
+    },
+    addPercentage:function() {
+        var percentageOfExpense = parseFloat((view.budgetExpense / view.budgetIncome) * 100);
+
+        view.expensePercentageDiv.innerHTML = Math.round(percentageOfExpense) + " %";
+
+    }
+}
 controller={
     init: function(){
         
         view.addMonth();
         controller.eventHandler();
+        
         
     },
     eventHandler: function(){
@@ -124,10 +132,10 @@ controller={
     
         
         function deleteExpenseBudget() {
-            view.budget=view.budget+parseInt(expense_to_delete[1]);
-            view.budgetExpense=view.budgetExpense-expense_to_delete[1];
-            view.totalBudget.innerHTML = view.budget;
-            view.budgetExpenseDiv.innerHTML = "- " + view.budgetExpense;
+            budgetController.budget=budgetController.budget+parseInt(expense_to_delete[1]);
+            budgetController.budgetExpense=budgetController.budgetExpense-expense_to_delete[1];
+            view.totalBudget.innerHTML = budgetController.budget;
+            view.budgetExpenseDiv.innerHTML = "- " + budgetController.budgetExpense;
         }
         deleteExpenseBudget();
     }
